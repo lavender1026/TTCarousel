@@ -1,67 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TAQ-8w-tW7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0Bi-E5-QQW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="rri-7M-B9i">
+        <scene sceneID="mZD-BW-rz8">
             <objects>
-                <collectionViewController id="TAQ-8w-tW7" customClass="ViewController" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="osf-xI-Oqr">
+                <viewController id="0Bi-E5-QQW" customClass="viewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IPh-KE-e8F"/>
+                        <viewControllerLayoutGuide type="bottom" id="CT4-lq-YRw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Yzd-UC-jhy">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="y23-EJ-eLW">
-                            <size key="itemSize" width="207" height="250"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        </collectionViewFlowLayout>
-                        <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="image" id="nH5-vS-CVl" customClass="TTImageCell">
-                                <rect key="frame" x="0.0" y="0.0" width="207" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="207" height="250"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rka-5x-IoT">
-                                            <rect key="frame" x="0.0" y="0.0" width="207" height="250"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlR-Tz-SPD">
-                                            <rect key="frame" x="0.0" y="200" width="207" height="50"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="50" id="wzG-rp-e2f"/>
-                                            </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                </view>
-                                <constraints>
-                                    <constraint firstItem="XlR-Tz-SPD" firstAttribute="trailing" secondItem="Rka-5x-IoT" secondAttribute="trailing" id="39G-Qk-DNh"/>
-                                    <constraint firstItem="XlR-Tz-SPD" firstAttribute="width" secondItem="Rka-5x-IoT" secondAttribute="width" id="DHw-49-9ke"/>
-                                    <constraint firstItem="Rka-5x-IoT" firstAttribute="top" secondItem="nH5-vS-CVl" secondAttribute="top" id="Dvw-hF-pvK"/>
-                                    <constraint firstAttribute="trailing" secondItem="Rka-5x-IoT" secondAttribute="trailing" id="FdF-hi-n4n"/>
-                                    <constraint firstAttribute="bottom" secondItem="Rka-5x-IoT" secondAttribute="bottom" id="PHf-4B-Yns"/>
-                                    <constraint firstItem="Rka-5x-IoT" firstAttribute="leading" secondItem="nH5-vS-CVl" secondAttribute="leading" id="PdJ-un-s6M"/>
-                                    <constraint firstItem="XlR-Tz-SPD" firstAttribute="bottom" secondItem="Rka-5x-IoT" secondAttribute="bottom" id="bai-A8-OSL"/>
-                                    <constraint firstItem="XlR-Tz-SPD" firstAttribute="leading" secondItem="Rka-5x-IoT" secondAttribute="leading" id="g5D-cn-Rxd"/>
-                                </constraints>
-                            </collectionViewCell>
-                        </cells>
-                        <connections>
-                            <outlet property="dataSource" destination="TAQ-8w-tW7" id="WCq-uB-3gh"/>
-                            <outlet property="delegate" destination="TAQ-8w-tW7" id="W5k-LI-R4y"/>
-                        </connections>
-                    </collectionView>
-                </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eS8-1B-D2R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Woc-4V-ugZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="424" y="316"/>
+            <point key="canvasLocation" x="65" y="259"/>
         </scene>
     </scenes>
 </document>
