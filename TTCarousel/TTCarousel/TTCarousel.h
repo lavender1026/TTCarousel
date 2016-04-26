@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger,ScrollViewDirection)
+{   ScrollDirectionHorizontal,
+    ScrollDirectionVertical
+};
 @interface TTCarousel : UIScrollView
-
+@property (nonatomic, strong) NSArray *images;
++ (instancetype)scrollViewWithFrame:(CGRect)frame superView:(UIView *)superView images:(NSArray *)images scrollViewDirection:(ScrollViewDirection)scrollViewDirection;
 @end
