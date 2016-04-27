@@ -16,6 +16,10 @@
  *   分页指示器
  */
 @property (nonatomic, strong) UIPageControl *pageControl;
+/**
+ *   定时器
+ */
+@property (nonatomic, strong) NSTimer *timer;
 @end
 @implementation viewController
 
@@ -25,7 +29,7 @@
     UIScrollView *carousel = [[UIScrollView alloc]initWithFrame:CGRectMake(20, 30, 335, 161)];
     carousel.backgroundColor = [UIColor redColor];
     // 定义图片的尺寸
-    _carousel = carousel;
+    self.carousel = carousel;
     CGFloat imageViewW = carousel.bounds.size.width;
     CGFloat imageViewH = carousel.bounds.size.height;
     CGFloat imageViewY = 0;
@@ -68,7 +72,7 @@
     pageControl.pageIndicatorTintColor = [UIColor purpleColor];
     // 设置当前页的颜色
     pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
-    _pageControl = pageControl;
+    self.pageControl = pageControl;
     
     // 设置代理
     carousel.delegate = self;
@@ -78,7 +82,7 @@
     
     [self.view addSubview:carousel];
     [self.view addSubview:pageControl];
-    
+    [self timer];
 }
 
 
@@ -92,8 +96,53 @@
     // 设置分页指示器当前页
     self.pageControl.currentPage = page;
 }
+//用户开始滚动时，停止定时器
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self.timer setFireDate:[NSDate distantFuture]];
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:3.0]];
+}
+//MARK:定时器
+- (void)startTimer
+{
+    NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+}
+- (void)endTimer
+{
+    [self.timer invalidate];
+    //    停止了记得置为nil，这样安全
+    self.timer = nil;
+}
+- (void)nextImage
+{
+//    现在是第几页
+    NSInteger page = self.pageControl.currentPage;
+    if (page ==ImageCount-1) {
+        page = 0;
+    }
+    else
+    {
+        page++;
+    }
+    CGPoint offset = CGPointMake(self.carousel.bounds.size.width*page, 0);
+    [self.carousel setContentOffset:offset animated:YES];
+}
 
-
+//MARK:懒加载timer
+- (NSTimer *)timer
+{
+    if (!_timer) {
+//        创建timer
+        _timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(nextImage) userInfo:nil repeats:YES];
+//        加入运行循环
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
+    return _timer;
+}
 //模型懒加载
 //- (NSMutableArray *)images
 //{

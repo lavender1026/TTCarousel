@@ -105,7 +105,7 @@ static int const ImageCount = 3;
     } else {
         self.scrollView.contentOffset = CGPointMake(self.scrollView.bounds.size.width, 0);
     }
-
+    
 }
 //MARK:定时器
 - (void)startTimer
