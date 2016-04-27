@@ -8,23 +8,29 @@
 
 #import "viewController.h"
 #import "TTCarousel.h"
+
+
+@interface viewController ()
+@property (nonatomic, strong) NSMutableArray *images;
+@end
 @implementation viewController
 
 - (void)viewDidLoad
 {
-    TTCarousel *carousel = [[TTCarousel alloc]initWithFrame:CGRectMake(0, 40, 375, 80)];
-    
+    TTCarousel *carousel = [[TTCarousel alloc]init];
     [self.view addSubview:carousel];
+    
+    
 }
 
 
 
 
 //模型懒加载
-- (NSArray *)images
+- (NSMutableArray *)images
 {
     if (!_images) {
-        NSArray *images = @[@"ad_00",@"ad_01",@"ad_02",@"ad_03",@"ad_04"];
+        NSMutableArray *images = @[@"ad_00.png",@"ad_01.png",@"ad_02.png",@"ad_03.png",@"ad_04.png"];
     }
     return _images;
 }

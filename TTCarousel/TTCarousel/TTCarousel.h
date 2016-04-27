@@ -14,5 +14,8 @@ typedef NS_ENUM(NSUInteger,ScrollViewDirection)
 };
 @interface TTCarousel : UIScrollView
 @property (nonatomic, strong) NSArray *images;
-+ (instancetype)scrollViewWithFrame:(CGRect)frame superView:(UIView *)superView images:(NSArray *)images scrollViewDirection:(ScrollViewDirection)scrollViewDirection;
+@property (nonatomic, assign) ScrollViewDirection scrollViewDirection;
+
++ (instancetype)scrollViewWithFrame:(CGRect)frame superView:(UIView *)superView images:(NSMutableArray *)images scrollViewDirection:(ScrollViewDirection)scrollViewDirection;
+
 @end

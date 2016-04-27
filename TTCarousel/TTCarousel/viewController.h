@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface viewController : UIViewController
-@property (nonatomic, strong) NSArray *images;
 @end
