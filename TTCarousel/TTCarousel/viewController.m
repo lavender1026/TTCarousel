@@ -20,6 +20,10 @@
  *   定时器
  */
 @property (nonatomic, strong) NSTimer *timer;
+/**
+ *   模型数组
+ */
+@property (nonatomic, strong) NSArray *images;
 @end
 @implementation viewController
 
@@ -27,7 +31,7 @@
 {
     
     UIScrollView *carousel = [[UIScrollView alloc]initWithFrame:CGRectMake(20, 30, 335, 161)];
-    carousel.backgroundColor = [UIColor redColor];
+//    carousel.backgroundColor = [UIColor redColor];
     // 定义图片的尺寸
     self.carousel = carousel;
     CGFloat imageViewW = carousel.bounds.size.width;
@@ -37,7 +41,7 @@
     for (NSInteger i = 0; i < ImageCount; i++) {
         // 1.创建UIImageView
         UIImageView *imageView = [[UIImageView alloc] init];
-       
+        imageView.tag = i;
         // 2.设置frame
         CGFloat imageViewX = imageViewW * i;
         imageView.frame = CGRectMake(imageViewX, imageViewY, imageViewW, imageViewH);
@@ -100,7 +104,16 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.timer setFireDate:[NSDate distantFuture]];
-}
+#warning 这里出现bug 最后一页拖拽不成功
+    
+    NSInteger page = self.pageControl.currentPage;
+    if (page ==ImageCount-1) {
+        page = 0;
+        CGPoint offset = CGPointMake(0, 0);
+        [self.carousel setContentOffset:offset animated:YES];
+
+    }
+    }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     [self.timer setFireDate:[NSDate dateWithTimeIntervalSinceNow:3.0]];
@@ -144,12 +157,12 @@
     return _timer;
 }
 //模型懒加载
-//- (NSMutableArray *)images
-//{
-//    if (!_images) {
-//        NSMutableArray *images = @[@"ad_00.png",@"ad_01.png",@"ad_02.png",@"ad_03.png",@"ad_04.png"];
-//    }
-//    return _images;
-//}
+- (NSArray *)images
+{
+    if (!_images) {
+        NSMutableArray *images = @[@"ad_00.png",@"ad_01.png",@"ad_02.png",@"ad_03.png",@"ad_04.png"];
+    }
+    return _images;
+}
 
 @end
