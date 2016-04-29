@@ -27,6 +27,7 @@
 @end
 @implementation viewController
 
+
 - (void)viewDidLoad
 {
     
@@ -48,8 +49,12 @@
         
         // 3.设置图片
         // 拼接图片的名称
+//        NSLog(@"%@",self.images[i]);
         NSString *imageName = [NSString stringWithFormat:@"ad_%02zd", i];
         imageView.image = [UIImage imageNamed:imageName];
+#warning 为什么这里调用模型却报错
+//        UIImage *image = self.images[i];
+//        imageView.image = image;
         // 4.添加到scrollView中
         [self.carousel addSubview:imageView];
     }
@@ -103,15 +108,19 @@
 //用户开始滚动时，停止定时器
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    [self.timer setFireDate:[NSDate distantFuture]];
+    
 #warning 这里出现bug 最后一页拖拽不成功
     
     NSInteger page = self.pageControl.currentPage;
     if (page ==ImageCount-1) {
+        [self.timer setFireDate:[NSDate distantFuture]];
+
         page = 0;
         CGPoint offset = CGPointMake(0, 0);
         [self.carousel setContentOffset:offset animated:YES];
-
+    }
+    else{
+        [self.timer setFireDate:[NSDate distantFuture]];
     }
     }
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -160,7 +169,8 @@
 - (NSArray *)images
 {
     if (!_images) {
-        NSMutableArray *images = @[@"ad_00.png",@"ad_01.png",@"ad_02.png",@"ad_03.png",@"ad_04.png"];
+        NSArray *images = @[@"ad_00.png",@"ad_01.png",@"ad_02.png",@"ad_03.png",@"ad_04.png"];
+        _images = images;
     }
     return _images;
 }
