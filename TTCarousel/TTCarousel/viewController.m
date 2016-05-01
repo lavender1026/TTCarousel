@@ -108,7 +108,6 @@
 //用户开始滚动时，停止定时器
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    
 #warning 这里出现bug 最后一页拖拽不成功
     
     NSInteger page = self.pageControl.currentPage;
